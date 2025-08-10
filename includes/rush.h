@@ -6,7 +6,7 @@
 /*   By: weijian <weijian@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/09 09:55:17 by weijian           #+#    #+#             */
-/*   Updated: 2025/08/10 15:59:39 by weijian          ###   ########.fr       */
+/*   Updated: 2025/08/10 16:06:17 by weijian          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@
 
 /* MACROS */
 # define DEFAULT_DICT "dictionaries/default.dict"
-# define DICT_ERR "DICT ERROR\n"
-# define WORD_ERR "WORD TOO LONG\n"
-# define ERROR "ERROR\n"
+# define DICT_ERR "Dict error\n"
+# define WORD_ERR "Word too long\n"
+# define ERROR "Error\n"
 # define BUFFER_SIZE 1024
 # define FILE_BUFFER 32678
 

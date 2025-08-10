@@ -6,7 +6,7 @@
 /*   By: weijian <weijian@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/10 09:47:01 by weijian           #+#    #+#             */
-/*   Updated: 2025/08/10 15:57:58 by weijian          ###   ########.fr       */
+/*   Updated: 2025/08/10 16:08:14 by weijian          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ static char	*empty_str(void)
 	char	*res;
 
 	res = malloc(1);
+	if (!res)
+		return (NULL);
 	res[0] = 0;
 	return (res);
 }
