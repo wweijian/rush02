@@ -74,4 +74,5 @@ void	translate(char *num, t_entry *dictionary, int fd)
 	write(fd, "\n", 1);
 	// write_entry(num_token, dictionary, 1);
 	// write(1, "\n", 1);
+	ft_numclear(num_token);
 }

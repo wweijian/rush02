@@ -88,7 +88,7 @@ char	*get_number(int ac, char **av)
 		str = make_number(av[1]);
 	if (!str)
 		write(1, ERROR, 6);
-	if (ft_strlen(str) > 39)
+	if (str && ft_strlen(str) > 39)
 	{
 		write(1, WORD_ERR, 14);
 		free(str);

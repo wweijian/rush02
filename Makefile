@@ -24,7 +24,7 @@ SRCS = main.c get_number.c load_dict.c translate.c tokenize.c write_num.c
 SRCS := $(addprefix ${SRCS_DIR},${SRCS})
 
 UTILS_DIR = utils/
-UTILS = chars.c dictionary.c list.c strings.c substr.c write_num.c
+UTILS = chars.c dictionary.c list.c strings.c substr.c write.c
 UTILS := $(addprefix ${UTILS_DIR},${UTILS})
 SRCS += ${UTILS}
 

@@ -47,6 +47,7 @@ int	add_to_list(t_entry **dict, char *file, t_index *index)
 	if (!node->ref)
 		return (free(node->key), free(node), 0);
 	node->ref_len = ft_strlen(node->ref);
+	node->next = NULL;
 	search = *dict;
 	if (search)
 	{
