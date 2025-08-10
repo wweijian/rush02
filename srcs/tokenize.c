@@ -6,7 +6,7 @@
 /*   By: weijian <weijian@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/10 12:42:53 by weijian           #+#    #+#             */
-/*   Updated: 2025/08/10 14:59:16 by weijian          ###   ########.fr       */
+/*   Updated: 2025/08/10 18:02:04 by weijian          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@ char	*get_exponent(int len)
 		return (TRILLION);
 	else if (len > 9)
 		return (BILLION);
-	else if (len > 7)
+	else if (len > 6)
 		return (MILLION);
-	else if (len > 4)
+	else if (len > 3)
 		return (THOUSAND);
 	return (NULL);
 }

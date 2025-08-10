@@ -6,7 +6,7 @@
 /*   By: weijian <weijian@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/09 09:54:55 by weijian           #+#    #+#             */
-/*   Updated: 2025/08/10 15:36:47 by weijian          ###   ########.fr       */
+/*   Updated: 2025/08/10 16:57:39 by weijian          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ int	main(int ac, char **av)
 	if (ac > 3)
 		return (0);
 	num = get_number(ac, av);
+	printf("[main] num : %s\n", num);
 	if (!num)
 		return (1);
 	dictionary = NULL;

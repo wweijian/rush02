@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_number.c                                       :+:      :+:    :+:   */
+/*   number.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: weijian <weijian@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/09 11:09:41 by weijian           #+#    #+#             */
-/*   Updated: 2025/08/10 15:41:15 by weijian          ###   ########.fr       */
+/*   Updated: 2025/08/10 16:56:45 by weijian          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,25 +15,20 @@
 void	remove_prevailing_zeroes(char *str)
 {
 	int	i;
-	int	max;
+	int	j;
+	int	start;
 
-	i = ft_isop(str[0]);
-	max = ft_strlen(str) - 1;
-	if (!ft_strncmp(str, "0", 2) || !ft_strncmp(str, "+0", 3)
-		|| !ft_strncmp(str, "-0", 3))
-	{
-		str[0] = '0';
-		str[1] = 0;
-		return ;
-	}
-	if (str[0] != '0' || (ft_isop(str[0]) && str[1] != '0'))
-		return ;
-	while (i < max)
-	{
-		str[i] = str[i + 1];
+	start = ft_isop(str[0]);
+	i = start;
+	j = 0;
+	while (str[i] == '0')
 		i++;
+	while (str[i + j])
+	{
+		str[start + j] = str[i + j];
+		j++;
 	}
-	return (remove_prevailing_zeroes(str));
+	str[start + j] = 0;
 }
 
 char	*make_number(char *src)

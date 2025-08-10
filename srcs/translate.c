@@ -6,7 +6,7 @@
 /*   By: weijian <weijian@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/09 23:34:10 by weijian           #+#    #+#             */
-/*   Updated: 2025/08/10 16:33:05 by weijian          ###   ########.fr       */
+/*   Updated: 2025/08/10 17:32:54 by weijian          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,9 +65,22 @@ void	translate(char *num, t_entry *dictionary, int fd)
 	len = ft_strlen(num);
 	num_token = NULL;
 	num_token = tokenize(num, len, &num_token);
+	puts("\n[translate.c : translate] nodes: ");
+	int k = 0;
+	for (t_num *search = num_token; search; search = search->next)
+	{
+		printf("node %d: ", k);
+		k++;
+		for (int i = 0; i < search->len; i++)
+			printf("%c", search->str[i]);
+		printf("\t%s", search->exponent);
+		fflush(stdout);
+		puts("");
+	}
 	if (!num_token)
 		return ((void) write(2, ERROR, 6));
-	write_to_fd(num_token, dictionary, num, fd);
+	// write_to_fd(num_token, dictionary, num, fd);
+	(void) fd;
 	write_to_fd(num_token, dictionary, num, 1);
 	ft_numclear(num_token);
 }

@@ -6,7 +6,7 @@
 #    By: weijian <weijian@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/08/09 10:17:01 by weijian           #+#    #+#              #
-#    Updated: 2025/08/10 16:00:21 by weijian          ###   ########.fr        #
+#    Updated: 2025/08/10 17:17:11 by weijian          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,11 +35,19 @@ OBJS_DIR = objs/
 OBJS_SUB_DIR = $(addprefix ${OBJS_DIR}, ${ALL_SUB_DIR})
 OBJS := $(addprefix ${OBJS_DIR}, ${SRCS:%.c=%.o})
 
+DICT_DIR = dictionaries/
+DICT = ${DICT_DIR}default.dict
+DEF_DICT = ${DICT_DIR}/default_copy.dict
+
 # --- RULES
-all: ${NAME}
+all: ${NAME} ${DICT}
 
 ${NAME}: ${OBJS} ${INCL}
 	${CC} ${CFLAGS} ${OBJS} -o ${NAME}
+
+${DICT}:
+	@cp ${DEF_DICT} ${DICT}
+	@chmod +w ${DICT}
 
 ${OBJS}: ${OBJS_DIR}%.o: %.c ${INCL} | ${OBJS_SUB_DIR}
 	@${CC} ${CFLAGS} -c $< -o $@
@@ -56,9 +64,10 @@ clean:
 
 fclean: clean
 	rm -f ${NAME}
+	rm -f ${DICT}
 
 re: fclean all
 
 # --- PHONY
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re restore
