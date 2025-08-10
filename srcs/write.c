@@ -6,7 +6,7 @@
 /*   By: weijian <weijian@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/10 09:00:37 by weijian           #+#    #+#             */
-/*   Updated: 2025/08/10 18:08:17 by weijian          ###   ########.fr       */
+/*   Updated: 2025/08/10 21:44:03 by weijian          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ void	write_ref(char *num, t_entry *dictionary, int fd)
 
 void	write_entry(t_num *num, t_entry *dictionary, int fd)
 {
-	// printf("\n[write.c : write_entry] string: %s\n", num->str);
 	if (!ft_strncmp(PLUS, num->str, 1) || !ft_strncmp(MINUS, num->str, 1))
 		write_ref(num->exponent, dictionary, fd);
 	else
@@ -42,9 +41,12 @@ void	write_entry(t_num *num, t_entry *dictionary, int fd)
 		write(fd, " ", 1);
 		if (num->exponent)
 			write_ref(num->exponent, dictionary, fd);
-		if (num->next && num->next->next)
+		if ((num->next && num->next->next)
+				|| (num->next && !num->next->exponent
+				&& !(num->next->str[1] == '0'
+				&& num->next->str[2] == '0')))
 			write(fd, ",", 1);
-		else if (num->next)
+		else if (num->next && !num->next->exponent)
 			write(fd, " and", 4);
 	}
 	if (num->next)
@@ -54,6 +56,20 @@ void	write_entry(t_num *num, t_entry *dictionary, int fd)
 	}
 }
 
+/* void	write_three_digits(t_num *num, t_entry *dictionary, int len, int fd)
+{
+	if (len == 3)
+	{
+		write_ones(num->str, dictionary, fd);
+		write(fd, " ", 1);
+		write_ref(HUNDRED, dictionary, fd);
+		if (*(num->str + 1) == '0' && *(num->str + 2) == '0')
+			return ;
+		write (fd, " and ", 5);
+	}
+	write_tens(num->str + 1, dictionary, fd);
+} */
+
 void	write_to_fd(t_num *num_token, t_entry *dictionary, char *num, int fd)
 {
 	int	len;
@@ -61,7 +77,10 @@ void	write_to_fd(t_num *num_token, t_entry *dictionary, char *num, int fd)
 	len = ft_strlen(num);
 	if (fd != 1)
 		write_key(num, len, fd);
-	write_entry(num_token, dictionary, fd);
+/* 	if (len < 4)
+		write_three_digits(num_token, dictionary, len, fd); */
+	else
+		write_entry(num_token, dictionary, fd);
 	if (fd == 1)
 		write(1, "\n", 1);
 }
