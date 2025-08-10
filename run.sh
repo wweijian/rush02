@@ -16,6 +16,7 @@ while true; do
 	echo -ne "\033[1A\033[2K"
 	cleaned=$(echo "$input" | sed 's/^0*//')
 	[ -z "$cleaned" ] && cleaned="0"
+	cleaned="${cleaned#"${cleaned%%[![:space:]]*}"}"
 	format=$(echo -n "$cleaned" | rev | sed 's/.\{3\}/& /g' | rev)
 	echo $format
 	valgrind ./rush-02 $input 2>valgrind_trace.txt
