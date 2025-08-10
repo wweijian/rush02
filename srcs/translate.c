@@ -6,7 +6,7 @@
 /*   By: weijian <weijian@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/09 23:34:10 by weijian           #+#    #+#             */
-/*   Updated: 2025/08/10 15:41:51 by weijian          ###   ########.fr       */
+/*   Updated: 2025/08/10 15:50:06 by weijian          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,5 +60,4 @@ void	translate(char *num, t_entry *dictionary, int fd)
 	write_to_fd(num_token, dictionary, num, fd);
 	write_to_fd(num_token, dictionary, num, 1);
 	ft_numclear(num_token);
-	(void) fd;
 }

@@ -6,7 +6,7 @@
 /*   By: weijian <weijian@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/09 12:01:40 by weijian           #+#    #+#             */
-/*   Updated: 2025/08/10 15:42:16 by weijian          ###   ########.fr       */
+/*   Updated: 2025/08/10 15:49:00 by weijian          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ void	initialize_index(t_index *index)
 int	add_to_list(t_entry **dict, char *file, t_index *index)
 {
 	t_entry	*node;
-	t_entry	*search;
 
 	node = malloc(sizeof(*node));
 	if (!node)
@@ -49,16 +48,8 @@ int	add_to_list(t_entry **dict, char *file, t_index *index)
 	if (!node->ref)
 		return (free(node->key), free(node), 0);
 	node->ref_len = ft_strlen(node->ref);
-	node->next = NULL;
-	search = *dict;
-	if (search)
-	{
-		while (search->next)
-			search = search->next;
-		search->next = node;
-	}
-	else
-		*dict = node;
+	node->next = *dict;
+	*dict = node;
 	return (1);
 }
 

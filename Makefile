@@ -6,7 +6,7 @@
 #    By: weijian <weijian@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/08/09 10:17:01 by weijian           #+#    #+#              #
-#    Updated: 2025/08/10 13:34:01 by weijian          ###   ########.fr        #
+#    Updated: 2025/08/10 16:00:21 by weijian          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,8 @@ INCL = rush.h numbers.h
 INCL := $(addprefix ${INCL_DIR},${INCL}) 
 
 SRCS_DIR = srcs/
-SRCS = main.c get_number.c load_dict.c translate.c tokenize.c write_num.c
+SRCS = main.c \
+		number.c dictionary.c translate.c tokenize.c write.c
 SRCS := $(addprefix ${SRCS_DIR},${SRCS})
 
 UTILS_DIR = utils/
