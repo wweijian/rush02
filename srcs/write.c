@@ -6,7 +6,7 @@
 /*   By: weijian <weijian@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/10 09:00:37 by weijian           #+#    #+#             */
-/*   Updated: 2025/08/10 21:45:37 by weijian          ###   ########.fr       */
+/*   Updated: 2025/08/10 21:48:03 by weijian          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,9 @@ void	write_entry(t_num *num, t_entry *dictionary, int fd)
 		if (num->exponent)
 			write_ref(num->exponent, dictionary, fd);
 		if ((num->next && num->next->next)
-				|| (num->next && !num->next->exponent
+			|| (num->next && !num->next->exponent
 				&& !(num->next->str[1] == '0'
-				&& num->next->str[2] == '0')))
+					&& num->next->str[2] == '0')))
 			write(fd, ",", 1);
 		else if (num->next && !num->next->exponent)
 			write(fd, " and", 4);

@@ -6,7 +6,7 @@
 /*   By: weijian <weijian@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/10 09:21:26 by weijian           #+#    #+#             */
-/*   Updated: 2025/08/10 21:35:03 by weijian          ###   ########.fr       */
+/*   Updated: 2025/08/10 21:47:36 by weijian          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ void	write_hundreds(char *num, t_entry *dictionary, int len, int fd)
 			return ;
 	}
 	if (*(num + 1) == '0')
-		return(write_ones(num + 2, dictionary, fd));
+		return (write_ones(num + 2, dictionary, fd));
 	else
 		return (write_tens(num + 1, dictionary, fd));
 }

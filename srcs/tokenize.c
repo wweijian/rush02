@@ -6,7 +6,7 @@
 /*   By: weijian <weijian@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/10 12:42:53 by weijian           #+#    #+#             */
-/*   Updated: 2025/08/10 21:40:50 by weijian          ###   ########.fr       */
+/*   Updated: 2025/08/10 21:47:42 by weijian          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ char	*get_exponent(int len)
 		return (THOUSAND);
 	return (NULL);
 }
-
 
 void	tokenize_op(char *num, t_num *node)
 {
