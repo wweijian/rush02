@@ -6,6 +6,7 @@
 # \033[1A → moves the cursor up one line.
 # \033[2K → clears the entire line.
 
+clear
 echo "[ctrl + c to exit script]"
 echo
 while true; do
