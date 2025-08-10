@@ -6,7 +6,7 @@
 /*   By: weijian <weijian@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/10 09:00:37 by weijian           #+#    #+#             */
-/*   Updated: 2025/08/10 21:44:03 by weijian          ###   ########.fr       */
+/*   Updated: 2025/08/10 21:45:37 by weijian          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,20 +56,6 @@ void	write_entry(t_num *num, t_entry *dictionary, int fd)
 	}
 }
 
-/* void	write_three_digits(t_num *num, t_entry *dictionary, int len, int fd)
-{
-	if (len == 3)
-	{
-		write_ones(num->str, dictionary, fd);
-		write(fd, " ", 1);
-		write_ref(HUNDRED, dictionary, fd);
-		if (*(num->str + 1) == '0' && *(num->str + 2) == '0')
-			return ;
-		write (fd, " and ", 5);
-	}
-	write_tens(num->str + 1, dictionary, fd);
-} */
-
 void	write_to_fd(t_num *num_token, t_entry *dictionary, char *num, int fd)
 {
 	int	len;
@@ -77,8 +63,6 @@ void	write_to_fd(t_num *num_token, t_entry *dictionary, char *num, int fd)
 	len = ft_strlen(num);
 	if (fd != 1)
 		write_key(num, len, fd);
-/* 	if (len < 4)
-		write_three_digits(num_token, dictionary, len, fd); */
 	else
 		write_entry(num_token, dictionary, fd);
 	if (fd == 1)
