@@ -6,20 +6,18 @@
 /*   By: weijian <weijian@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/09 23:34:10 by weijian           #+#    #+#             */
-/*   Updated: 2025/08/10 08:05:14 by weijian          ###   ########.fr       */
+/*   Updated: 2025/08/10 14:13:10 by weijian          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rush.h"
 
-int	is_one_then_zeroes(char *num)
+int	just_zeroes(char *num)
 {
-	if (*num != '1')
-		return (0);
 	num++;
-	while (num)
+	while (*num)
 	{
-		if (*num != 0)
+		if (*num != '0')
 			return (0);
 		num++;
 	}
@@ -31,33 +29,49 @@ int	find_num(char *num, t_entry *dictionary)
 	t_entry	*search;
 	int		num_len;
 
-	search = dictionary;
+	search = ft_lstsearch(dictionary, num);
+	if (!search)
+		return (0);
 	num_len = ft_strlen(num);
-	while (search)
+	if (*num == '1')
 	{
-		if (!ft_strcmp(num, search->key))
-		{
-			if (*num == '1')
-			{
-				if (!ft_strcmp(num, "100"))
-					return (write(1, "a hundred", 9));
-				if(num_len % 3 == 1 && is_one_then_zeroes(num))
-					write(1, "a ", 2);
-			}
-			write(1, search->ref, ft_strlen(search->ref));
-			return (1);
-		}
-		search = search->next;
+		if (!ft_strcmp(num, "100"))
+			return (write(1, "one hundred\n", 12));
+		if (num_len % 3 == 1 && just_zeroes(num))
+			write(1, "one ", 4);
 	}
-	return (0);
+	write(1, search->ref, ft_strlen(search->ref));
+	write(1, "\n", 1);
+	return (1);
 }
 
-void	translate(char *num, t_entry *dictionary)
+void	translate(char *num, t_entry *dictionary, int fd)
 {
-	int	len;
+	int		len;
+	t_num	*num_token;
 
+	fd = 1;
 	if (find_num(num, dictionary))
 		return ;
 	len = ft_strlen(num);
-	(void)len;
+	num_token = NULL;
+	num_token = tokenize(num, len, &num_token);
+	if (!num_token)
+		return((void) write(2, ERROR, 6));
+	puts("[translate.c : translate]");
+	for (t_num *search = num_token; search; search = search->next)
+	{
+		for (int i = 0; i < search->len; i++)
+			printf("%c", search->str[i]);
+		printf(" ");
+		fflush(stdout);
+		if (search->exponent)
+			write_ref(search->exponent, dictionary, 1);
+		puts("");
+	}
+	write_key(num, len, fd);
+	write_entry(num_token, dictionary, fd);
+	write(fd, "\n", 1);
+	// write_entry(num_token, dictionary, 1);
+	// write(1, "\n", 1);
 }

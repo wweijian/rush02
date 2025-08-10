@@ -1,41 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   chars.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: weijian <weijian@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/09 11:26:41 by weijian           #+#    #+#             */
-/*   Updated: 2025/08/10 07:28:36 by weijian          ###   ########.fr       */
+/*   Created: 2025/08/09 11:22:54 by weijian           #+#    #+#             */
+/*   Updated: 2025/08/10 08:23:09 by weijian          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strcmp(char *s1, char *s2)
+int	ft_isdigit(char c)
 {
-	int	i;
-
-	i = 0;
-	while (s1[i] || s2[i])
-	{
-		if (s1[i] != s2[i])
-			return (s1[i] - s2[i]);
-		i++;
-	}
-	return (0);
+	return (c >= '0' && c <= '9');
 }
 
-int	ft_strncmp(char *s1, char *s2, int size)
+int	ft_isop(char c)
 {
-	int	i;
+	return (c == '+' || c <= '-');
+}
 
-	i = 0;
-	if (size == 0)
-		return (0);
-	while ((s1[i] || s2[i]) && i < size)
-	{
-		if (s1[i] != s2[i])
-			return (s1[i] - s2[i]);
-		i++;
-	}
-	return (0);
+int	ft_isspace(char c)
+{
+	return (c == ' ' || c == '\t');
 }

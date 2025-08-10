@@ -6,7 +6,7 @@
 #    By: weijian <weijian@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/08/09 10:17:01 by weijian           #+#    #+#              #
-#    Updated: 2025/08/10 07:41:25 by weijian          ###   ########.fr        #
+#    Updated: 2025/08/10 13:34:01 by weijian          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,15 +16,15 @@ CC = cc
 CFLAGS = -Wall -Werror -Wextra -g -O0 -I${INCL_DIR}
 
 INCL_DIR = includes/
-INCL = rush.h
+INCL = rush.h numbers.h
 INCL := $(addprefix ${INCL_DIR},${INCL}) 
 
 SRCS_DIR = srcs/
-SRCS = main.c get_number.c load_dict.c translate.c
+SRCS = main.c get_number.c load_dict.c translate.c tokenize.c write_num.c
 SRCS := $(addprefix ${SRCS_DIR},${SRCS})
 
 UTILS_DIR = utils/
-UTILS = dictionary.c ft_list.c ft_strlcpy.c ft_substr.c ft_is.c ft_strcmp.c ft_strlen.c
+UTILS = chars.c dictionary.c list.c strings.c substr.c write_num.c
 UTILS := $(addprefix ${UTILS_DIR},${UTILS})
 SRCS += ${UTILS}
 

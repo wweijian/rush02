@@ -6,7 +6,7 @@
 /*   By: weijian <weijian@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/09 09:54:55 by weijian           #+#    #+#             */
-/*   Updated: 2025/08/10 07:50:55 by weijian          ###   ########.fr       */
+/*   Updated: 2025/08/10 09:40:04 by weijian          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 
 int	main(int ac, char **av)
 {
-	char	*num;
 	t_entry	*dictionary;
+	char	*num;
+	int		fd;
 
 	if (ac > 3)
 		return (0);
@@ -24,12 +25,13 @@ int	main(int ac, char **av)
 		return (1);
 	printf("[main.c : main] num:%s\n", num);
 	dictionary = NULL;
-	if (!load_dictionary(ac, av, &dictionary))
+	fd = load_dictionary(ac, av, &dictionary);
+	if (fd < 0)
 		return (1);
 	// for(t_entry *search = dictionary; search; search = search->next)
 	// 	printf("%s:%s\n", search->key, search->ref);
-	translate(num, dictionary);
-	write(1, "\n", 1);
+	translate(num, dictionary, fd);
 	free(num);
 	ft_lstclear(dictionary);
+	close(fd);
 }

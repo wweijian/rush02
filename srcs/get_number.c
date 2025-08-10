@@ -6,12 +6,11 @@
 /*   By: weijian <weijian@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/09 11:09:41 by weijian           #+#    #+#             */
-/*   Updated: 2025/08/10 07:36:22 by weijian          ###   ########.fr       */
+/*   Updated: 2025/08/10 13:11:45 by weijian          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rush.h"
-
 
 void	remove_prevailing_zeroes(char *str)
 {
@@ -89,5 +88,11 @@ char	*get_number(int ac, char **av)
 		str = make_number(av[1]);
 	if (!str)
 		write(1, ERROR, 6);
+	if (ft_strlen(str) > 39)
+	{
+		write(1, WORD_ERR, 14);
+		free(str);
+		str = NULL;
+	}
 	return (str);
 }
