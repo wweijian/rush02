@@ -1,5 +1,8 @@
 #!/bin/zsh
 
+# make first
+# valgrind trace saves to valgrind_trace.txt (will be overwritten on each call)
+
 # \033[1A → moves the cursor up one line.
 # \033[2K → clears the entire line.
 
