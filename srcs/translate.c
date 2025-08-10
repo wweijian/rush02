@@ -6,7 +6,7 @@
 /*   By: weijian <weijian@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/09 23:34:10 by weijian           #+#    #+#             */
-/*   Updated: 2025/08/10 15:50:06 by weijian          ###   ########.fr       */
+/*   Updated: 2025/08/10 16:33:05 by weijian          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 int	just_zeroes(char *num)
 {
 	num++;
+	if (*num == 0)
+		return (0);
 	while (*num)
 	{
 		if (*num != '0')
@@ -36,9 +38,17 @@ int	find_num(char *num, t_entry *dictionary)
 	if (*num == '1')
 	{
 		if (!ft_strcmp(num, "100"))
-			return (write(1, "one hundred\n", 12));
+		{
+			write_ref("1", dictionary, 1);
+			write(1, " ", 1);
+			write_ref("100", dictionary, 1);
+			return (1);
+		}
 		if (num_len % 3 == 1 && just_zeroes(num))
-			write(1, "one ", 4);
+		{
+			write_ref("1", dictionary, 1);
+			write(1, " ", 1);
+		}
 	}
 	write(1, search->ref, ft_strlen(search->ref));
 	write(1, "\n", 1);
