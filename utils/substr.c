@@ -6,7 +6,7 @@
 /*   By: weijian <weijian@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/10 09:47:01 by weijian           #+#    #+#             */
-/*   Updated: 2025/08/10 16:08:14 by weijian          ###   ########.fr       */
+/*   Updated: 2025/08/10 18:21:11 by weijian          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static int	ft_strlcpy(char *dst, const char *src, int size)
 	return (i);
 }
 
-static char	*empty_str(void)
+char	*empty_str(void)
 {
 	char	*res;
 

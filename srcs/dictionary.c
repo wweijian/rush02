@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   load_dict.c                                        :+:      :+:    :+:   */
+/*   dictionary.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: weijian <weijian@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/09 12:01:40 by weijian           #+#    #+#             */
-/*   Updated: 2025/08/10 15:49:00 by weijian          ###   ########.fr       */
+/*   Updated: 2025/08/10 18:22:40 by weijian          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,11 @@ int	add_to_list(t_entry **dict, char *file, t_index *index)
 			index->key_end - index->key_start + 1);
 	if (!node->key)
 		return (free(node), 0);
-	node->ref = ft_substr(file, index->ref_start,
-			index->ref_end - index->ref_start + 1);
+	if (index->ref_end < index->ref_start)
+		node->ref = empty_str();
+	else
+		node->ref = ft_substr(file, index->ref_start,
+				index->ref_end - index->ref_start + 1);
 	if (!node->ref)
 		return (free(node->key), free(node), 0);
 	node->ref_len = ft_strlen(node->ref);

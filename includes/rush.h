@@ -6,7 +6,7 @@
 /*   By: weijian <weijian@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/09 09:55:17 by weijian           #+#    #+#             */
-/*   Updated: 2025/08/10 18:06:35 by weijian          ###   ########.fr       */
+/*   Updated: 2025/08/10 18:21:26 by weijian          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,7 @@ int		ft_isspace(char c);
 int		ft_strlen(char *s);
 int		ft_strcmp(char *s1, char *s2);
 int		ft_strncmp(char *s1, char *s2, int n);
+char	*empty_str(void);
 char	*ft_substr(char *s, int start, int len);
 
 /* LIST */
