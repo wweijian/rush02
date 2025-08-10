@@ -6,7 +6,7 @@
 /*   By: weijian <weijian@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/09 09:55:17 by weijian           #+#    #+#             */
-/*   Updated: 2025/08/10 14:04:11 by weijian          ###   ########.fr       */
+/*   Updated: 2025/08/10 15:21:45 by weijian          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ int		load_dictionary(int ac, char **av, t_entry **dict);
 void	translate(char *num, t_entry *dictionary, int fd);
 void	write_entry(t_num *num, t_entry *dictionary, int fd);
 void	write_key(char *num, int len, int fd);
+void	write_to_fd(t_num *num_token, t_entry *dictionary, char *num, int fd);
 
 t_num	*tokenize(char *num, int len, t_num **list);
 
@@ -85,5 +86,6 @@ int		ft_is_sign_entry(char *str, t_index *index, int i);
 int		ft_findnewl(char *str, int index);
 
 void	write_ref(char *num, t_entry *dictionary, int fd);
+
 
 #endif

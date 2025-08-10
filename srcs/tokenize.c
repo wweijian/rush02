@@ -6,7 +6,7 @@
 /*   By: weijian <weijian@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/10 12:42:53 by weijian           #+#    #+#             */
-/*   Updated: 2025/08/10 14:02:15 by weijian          ###   ########.fr       */
+/*   Updated: 2025/08/10 14:59:16 by weijian          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,24 @@ char	*get_exponent(int len)
 		return (MILLION);
 	else if (len > 4)
 		return (THOUSAND);
+	return (NULL);
+}
+
+void	tokenize_op(char *num, t_num *node)
+{
+	node->len = 1;
+	if (*num == '+')
+		node->exponent = PLUS;
 	else
-		return (NULL);
+		node->exponent = MINUS;
+	node->str = num;
+}
+
+void	tokenize_num(char *num, int len, t_num *node)
+{
+	node->len = len % 3 + (len % 3 == 0) * 3;
+	node->exponent = get_exponent(len);
+	node->str = num;
 }
 
 t_num	*tokenize(char *num, int len, t_num **list)
@@ -53,22 +69,17 @@ t_num	*tokenize(char *num, int len, t_num **list)
 	if (!node)
 	{
 		ft_numclear(*list);
-		return(NULL);
+		return (NULL);
 	}
 	if (ft_isop(*num))
-	{
-		node->len = 1;
-		if (*num == '+')
-			node->exponent = PLUS;
-		else
-			node->exponent = MINUS;
-	}
+		tokenize_op(num, node);
 	else
+		tokenize_num(num, len, node);
+	if (node->len == 3 && !ft_strncmp(node->str, "000", 3))
 	{
-		node->len = len % 3 + (len % 3 == 0) * 3;
-		node->exponent = get_exponent(len);
+		free(node);
+		return (tokenize (num + 3, len - 3, list));
 	}
-	node->str = num;
 	node->next = tokenize(num + node->len, len - node->len, list);
 	return (node);
 }
