@@ -6,7 +6,7 @@
 # \033[1A → moves the cursor up one line.
 # \033[2K → clears the entire line.
 
-echo "ctrl + c to exit script"
+echo "[ctrl + c to exit script]"
 echo
 while true; do
 	read input
@@ -16,9 +16,9 @@ while true; do
 	echo -ne "\033[1A\033[2K"
 	cleaned=$(echo "$input" | sed 's/^0*//')
 	[ -z "$cleaned" ] && cleaned="0"
-	cleaned="${cleaned#"${cleaned%%[![:space:]]*}"}"
 	format=$(echo -n "$cleaned" | rev | sed 's/.\{3\}/& /g' | rev)
-	echo $format
+	final=$(echo "$format" | sed 's/^[[:space:]]*//')
+	echo $final
 	valgrind ./rush-02 $input 2>valgrind_trace.txt
 	echo
 done
