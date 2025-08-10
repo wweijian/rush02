@@ -6,23 +6,16 @@
 /*   By: weijian <weijian@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/09 16:45:51 by weijian           #+#    #+#             */
-/*   Updated: 2025/08/10 13:17:31 by weijian          ###   ########.fr       */
+/*   Updated: 2025/08/10 15:39:49 by weijian          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "rush.h"
 
-/* 
-	ft_lstclear
-	ft_lstnew;
-	ft_lstaddback;
-	ft_iteri
-*/
-
 void	ft_lstclear(t_entry *list)
 {
 	t_entry	*next;
-	
+
 	if (list == NULL)
 		return ;
 	next = list->next;
@@ -35,7 +28,7 @@ void	ft_lstclear(t_entry *list)
 void	ft_numclear(t_num *list)
 {
 	t_num	*next;
-	
+
 	if (list == NULL)
 		return ;
 	next = list->next;
@@ -45,7 +38,7 @@ void	ft_numclear(t_num *list)
 
 t_entry	*ft_lstsearch(t_entry *list, char *ref)
 {
-	t_entry *search;
+	t_entry	*search;
 
 	search = list;
 	while (search)

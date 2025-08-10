@@ -6,7 +6,7 @@
 /*   By: weijian <weijian@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/09 11:09:41 by weijian           #+#    #+#             */
-/*   Updated: 2025/08/10 13:11:45 by weijian          ###   ########.fr       */
+/*   Updated: 2025/08/10 15:41:15 by weijian          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,11 @@ void	remove_prevailing_zeroes(char *str)
 {
 	int	i;
 	int	max;
-	
+
 	i = ft_isop(str[0]);
 	max = ft_strlen(str) - 1;
-	if (!ft_strncmp(str, "0", 2)|| !ft_strncmp(str, "+0", 3) || !ft_strncmp(str, "-0", 3))
+	if (!ft_strncmp(str, "0", 2) || !ft_strncmp(str, "+0", 3)
+		|| !ft_strncmp(str, "-0", 3))
 	{
 		str[0] = '0';
 		str[1] = 0;
@@ -69,7 +70,7 @@ char	*read_number(void)
 	int		bytes_read;
 	char	buf[BUFFER_SIZE + 1];
 	char	*str;
-	
+
 	bytes_read = read(0, buf, BUFFER_SIZE);
 	if (bytes_read < 1)
 		return (NULL);

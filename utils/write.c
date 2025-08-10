@@ -6,7 +6,7 @@
 /*   By: weijian <weijian@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/10 09:21:26 by weijian           #+#    #+#             */
-/*   Updated: 2025/08/10 15:21:24 by weijian          ###   ########.fr       */
+/*   Updated: 2025/08/10 15:41:03 by weijian          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,7 @@ void	write_ref(char *num, t_entry *dictionary, int fd)
 		return ;
 	search = ft_lstsearch(dictionary, num);
 	if (search)
-	{
-		write(fd, " ", 1);
 		write(fd, search->ref, search->ref_len);
-	}
 }
 
 void	write_teens(char *num, t_entry *dictionary, int fd)
@@ -91,6 +88,7 @@ void	write_tens(char *num, t_entry *dictionary, int fd)
 		write_ref(TWENTY, dictionary, fd);
 	else if (*num == '1')
 		return (write_teens(num + 1, dictionary, fd));
+	write(fd, " ", 1);
 	return (write_ones(num + 1, dictionary, fd));
 }
 
@@ -99,7 +97,10 @@ void	write_hundreds(char *num, t_entry *dictionary, int len, int fd)
 	if (len == 3 && *num != '0')
 	{
 		write_ones(num, dictionary, fd);
+		write(fd, " ", 1);
 		write_ref(HUNDRED, dictionary, fd);
+		if (!(*(num + 1) == '0' && *(num + 2) == '0'))
+			write(fd, " ", 1);
 	}
 	else
 		return (write_tens(num, dictionary, fd));

@@ -6,7 +6,7 @@
 /*   By: weijian <weijian@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/09 21:03:48 by weijian           #+#    #+#             */
-/*   Updated: 2025/08/09 23:31:13 by weijian          ###   ########.fr       */
+/*   Updated: 2025/08/10 15:38:35 by weijian          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int	ft_findnewl(char *str, int index)
 {
-	while(str[index])
+	while (str[index])
 	{
-		if(str[index] == '\n')
+		if (str[index] == '\n')
 			return (index);
 		index++;
 	}

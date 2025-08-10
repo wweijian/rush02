@@ -6,7 +6,7 @@
 /*   By: weijian <weijian@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/09 09:55:17 by weijian           #+#    #+#             */
-/*   Updated: 2025/08/10 15:21:45 by weijian          ###   ########.fr       */
+/*   Updated: 2025/08/10 15:38:12 by weijian          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ char	*ft_substr(char *s, int start, int len);
 void	*ft_memcpy(void *dest, const void *src, int n);
 
 void	ft_lstclear(t_entry *list);
-t_entry *ft_lstsearch(t_entry *list, char *ref);
+t_entry	*ft_lstsearch(t_entry *list, char *ref);
 void	ft_numclear(t_num *list);
 
 void	write_hundreds(char *num, t_entry *dictionary, int len, int fd);
@@ -86,6 +86,5 @@ int		ft_is_sign_entry(char *str, t_index *index, int i);
 int		ft_findnewl(char *str, int index);
 
 void	write_ref(char *num, t_entry *dictionary, int fd);
-
 
 #endif
