@@ -6,7 +6,7 @@
 /*   By: weijian <weijian@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/09 12:01:40 by weijian           #+#    #+#             */
-/*   Updated: 2025/08/10 18:22:40 by weijian          ###   ########.fr       */
+/*   Updated: 2025/08/11 08:27:21 by weijian          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,9 +84,17 @@ int	load_dictionary(int ac, char **av, t_entry **dict)
 	int	fd;
 
 	if (ac == 3)
+	{
 		fd = open(av[2], O_RDWR);
+		if (fd < 0)
+			fd = open(av[2], O_RDONLY);
+	}
 	else
+	{
 		fd = open(DEFAULT_DICT, O_RDWR);
+		if (fd < 0)
+			fd = open(DEFAULT_DICT, O_RDONLY);
+	}
 	if (fd < 0)
 	{
 		write(1, DICT_ERR, 11);
