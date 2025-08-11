@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   translate.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: weijian <weijian@student.42.fr>            +#+  +:+       +#+        */
+/*   By: wjhoe <wjhoe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/09 23:34:10 by weijian           #+#    #+#             */
-/*   Updated: 2025/08/10 21:46:04 by weijian          ###   ########.fr       */
+/*   Updated: 2025/08/11 18:43:44 by wjhoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	translate(char *num, t_entry *dictionary, int fd)
 	num_token = tokenize(num, len, &num_token);
 	if (!num_token)
 		return ((void) write(2, ERROR, 6));
-	(void) fd;
+	write_to_fd(num_token, dictionary, num, fd);
 	write_to_fd(num_token, dictionary, num, 1);
 	ft_numclear(num_token);
 }
